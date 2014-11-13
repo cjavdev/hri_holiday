@@ -9,6 +9,6 @@ class WishMailer < ActionMailer::Base
   def holiday_cheer(wish)
     @greeting = "Happy Holidays"
 
-    mail to: wish.to_email
+    mail to: wish.to_email, from: wish.from_email
   end
 end

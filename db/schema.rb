@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141113054711) do
+ActiveRecord::Schema.define(version: 20141113214349) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,14 +27,13 @@ ActiveRecord::Schema.define(version: 20141113054711) do
 
   create_table "wishes", force: true do |t|
     t.integer  "user_id"
-    t.string   "to_email"
     t.string   "note"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "from_email"
+    t.integer  "wisher_id"
+    t.integer  "wishee_id"
   end
 
-  add_index "wishes", ["user_id", "to_email"], name: "index_wishes_on_user_id_and_to_email", unique: true, using: :btree
   add_index "wishes", ["user_id"], name: "index_wishes_on_user_id", using: :btree
 
 end

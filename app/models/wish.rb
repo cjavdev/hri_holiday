@@ -8,6 +8,7 @@
 #  note       :string(255)
 #  created_at :datetime
 #  updated_at :datetime
+#  from_email :string(255)
 #
 
 class Wish < ActiveRecord::Base

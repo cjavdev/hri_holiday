@@ -130,6 +130,7 @@ DEPENDENCIES
   bootstrap-sass
   jbuilder (~> 2.0)
   jquery-rails
+  launchy
   letter_opener
   pg
   rails (= 4.1.7)

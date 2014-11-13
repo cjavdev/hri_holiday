@@ -1,3 +1,56 @@
-Christmas Tree
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-4">
+      <h1>Christmas Tree</h1>
+      <form>
+        <div class="form-group">From
+          <input
+            class="form-control"
+            name="from_email"
+            type="email"
+            value="<%= params[:from_email] %>"></input>
+        </div>
+        <div class="form-group">To
+          <input
+            class="form-control"
+            name="to_email"
+            type="email"></input>
+        </div>
+        <div class="form-group">Note
+          <textarea class="form-control" name="note"></textarea>
+        </div>
+        <input class="btn btn-primary" type="submit" value="Submit">
+      </form>
+    </div>
+  </div>
+  <div class="row">
+    <ul id="wishes">
+    </ul>
+  </div>
+</div>
 
+<script>
+  $(function () {
+    $('form').on('submit', function (event) {
+      event.preventDefault();
 
+      var $form = $(event.currentTarget);
+      var content = $form.serializeJSON();
+      var wish = new App.Models.Wish(content);
+
+      wish.save().then(function () {
+        console.log("success");
+      }, function () {
+        console.log("error");
+      });
+    });
+
+    var wishes = new App.Collections.Wishes();
+
+    wishes.fetch().then(function () {
+      wishes.each(function (wish) {
+        $('#wishes').append($('<div>').text(wish.id));
+      });
+    });
+  });
+</script>

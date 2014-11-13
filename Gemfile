@@ -9,6 +9,7 @@ gem 'jquery-rails'
 gem 'jbuilder', '~> 2.0'
 gem 'spring',        group: :development
 
+gem 'bootstrap-sass'
 gem 'backbone-on-rails'
 
 group :development do

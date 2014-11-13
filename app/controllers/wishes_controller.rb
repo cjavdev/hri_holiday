@@ -1,18 +1,17 @@
 class WishesController < ApplicationController
-  before_action :authenticate_user!
-
   def index
-    @wishes = current_user.wishes
+    @wishes = Wish.all
     render json: @wishes
   end
 
   def show
-    @wish = current_user.wishes.find(params[:id])
+    @wish = Wish.find(params[:id])
     render json: @wish
   end
 
   def create
-    @wish = current_user.wishes.new(wish_params)
+    @wish = Wish.new(wish_params)
+    WishMailer.holiday_cheer(@wish).deliver
 
     if @wish.save
       render json: @wish
@@ -22,11 +21,11 @@ class WishesController < ApplicationController
   end
 
   def edit
-    @wish = current_user.wishes.find(params[:id])
+    @wish = Wish.find(params[:id])
   end
 
   def update
-    @wish = current_user.wishes.find(params[:id])
+    @wish = Wish.find(params[:id])
 
     if @wish.update(wish_params)
       render json: @wish
@@ -36,7 +35,7 @@ class WishesController < ApplicationController
   end
 
   def destroy
-    @wish = current_user.wishes.find(params[:id])
+    @wish = Wish.find(params[:id])
     @wish.try(:destroy)
     render json: {}
   end
@@ -44,6 +43,6 @@ class WishesController < ApplicationController
   private
 
   def wish_params
-    params.require(:wish).permit(:to_email, :note)
+    params.require(:wish).permit(:from_email, :to_email, :note)
   end
 end

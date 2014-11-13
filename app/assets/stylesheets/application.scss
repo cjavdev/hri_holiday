@@ -16,3 +16,14 @@
 
 @import "bootstrap";
 @import "bootstrap-sprockets";
+
+.tree {
+  width: 100%;
+  background-image: asset-url("tree1.jpg");
+  background-size: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}

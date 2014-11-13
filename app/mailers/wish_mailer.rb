@@ -1,5 +1,5 @@
 class WishMailer < ActionMailer::Base
-  default from: "north@po.le"
+  default from: "cj@insiderai.com"
 
   # Subject can be set in your I18n file at config/locales/en.yml
   # with the following lookup:

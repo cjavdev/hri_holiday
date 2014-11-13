@@ -1,25 +1,26 @@
-<div class="container-fluid">
+<div class="container-fluid tree">
   <div class="row">
-    <div class="col-md-4">
-      <h1>Christmas Tree</h1>
+    <div class="col-md-2 col-sm-4 col-lg-2">
       <form>
-        <div class="form-group">From
+        <div class="form-group">
           <input
             class="form-control"
             name="from_email"
             type="email"
+            placeholder="From:"
             value="<%= params[:from_email] %>"></input>
         </div>
-        <div class="form-group">To
+        <div class="form-group">
           <input
             class="form-control"
             name="to_email"
+            placeholder="To:"
             type="email"></input>
         </div>
-        <div class="form-group">Note
-          <textarea class="form-control" name="note"></textarea>
+        <div class="form-group">
+          <textarea class="form-control" name="note">Happy Holidays!</textarea>
         </div>
-        <input class="btn btn-primary" type="submit" value="Submit">
+        <input class="btn btn-primary" type="submit" value="Send Cheer!">
       </form>
     </div>
   </div>

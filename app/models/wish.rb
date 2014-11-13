@@ -12,5 +12,6 @@
 #
 
 class Wish < ActiveRecord::Base
-  belongs_to :user
+  belongs_to :wisher, class_name: 'User'
+  belongs_to :wishee, class_name: 'User'
 end

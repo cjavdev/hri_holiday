@@ -10,8 +10,7 @@ class WishesController < ApplicationController
   end
 
   def create
-    @wish = Wish.new(wish_params)
-    WishMailer.holiday_cheer(@wish).deliver
+    Cheer.new(wish_params)
 
     if @wish.save
       render json: @wish

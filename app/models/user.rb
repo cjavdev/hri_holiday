@@ -10,6 +10,9 @@
 #
 
 class User < ActiveRecord::Base
+  has_many :wishes, foreign_key: :wishee_id
+  has_many :wished_wishes, foreign_key: :wisher_id
+
   before_validation do
     self.auth_token ||= SecureRandom.hex
   end

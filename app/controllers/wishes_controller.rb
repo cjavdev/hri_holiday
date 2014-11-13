@@ -10,12 +10,12 @@ class WishesController < ApplicationController
   end
 
   def create
-    Cheer.new(wish_params)
+    @cheer = Cheer.new(wish_params)
 
-    if @wish.save
-      render json: @wish
+    if @cheer.save
+      render json: @cheer
     else
-      render json: @wish.errors.full_messages, status: :unprocessable_entity
+      render json: @cheer.errors.full_messages, status: :unprocessable_entity
     end
   end
 

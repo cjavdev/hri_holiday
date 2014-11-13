@@ -11,6 +11,7 @@ gem 'spring',        group: :development
 
 gem 'bootstrap-sass'
 gem 'backbone-on-rails'
+gem 'newrelic_rpm'
 
 group :development do
   gem 'letter_opener'

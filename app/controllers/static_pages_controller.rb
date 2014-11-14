@@ -8,4 +8,7 @@ class StaticPagesController < ApplicationController
       @current_email = "northpole@happyholida.ys"
     end
   end
+
+  def map
+  end
 end

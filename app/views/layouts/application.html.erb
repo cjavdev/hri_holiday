@@ -4,9 +4,26 @@
   <title>Holiday Cheer!</title>
   <script>
     CURRENT_EMAIL = "<%= @current_email %>"
+    if(window.location.origin.indexOf('localhost') === -1) {
+      MAP_API_KEY = "AIzaSyC4WgrOEVccr0yC4WIxo6inJC4cL3Ct8pc";
+    } else {
+      MAP_API_KEY = "AIzaSyAwtAMXGSZz8FN-RUrQOQPXDI4r6pSn-UE";
+    }
   </script>
 
   <%= stylesheet_link_tag    'application', media: 'all' %>
+  <% if Rails.env.production? %>
+    <script
+      type="text/javascript"
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC4WgrOEVccr0yC4WIxo6inJC4cL3Ct8pc">
+    </script>
+  <% else %>
+    <script
+      type="text/javascript"
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAwtAMXGSZz8FN-RUrQOQPXDI4r6pSn-UE">
+    </script>
+  <% end %>
+
   <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
 </head>

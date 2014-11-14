@@ -2,13 +2,20 @@
 #
 # Table name: wishes
 #
-#  id         :integer          not null, primary key
-#  user_id    :integer
-#  to_email   :string(255)
-#  note       :string(255)
-#  created_at :datetime
-#  updated_at :datetime
-#  from_email :string(255)
+#  id               :integer          not null, primary key
+#  note             :string(255)
+#  created_at       :datetime
+#  updated_at       :datetime
+#  wisher_id        :integer
+#  wishee_id        :integer
+#  latitude         :float
+#  longitude        :float
+#  altitude         :float
+#  accuracy         :float
+#  altitudeAccuracy :float
+#  heading          :float
+#  speed            :float
+#  address          :string(255)
 #
 
 class Wish < ActiveRecord::Base

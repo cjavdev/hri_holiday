@@ -8,7 +8,7 @@ window.App = {
     var newWish = new App.Models.Wish();
 
     navigator.geolocation.getCurrentPosition(function (pos) {
-      newWish.set({ coords: pos.coords });
+      newWish.set(pos.coords);
       console.log(arguments);
     }, function () {
       console.log(arguments);
@@ -25,5 +25,8 @@ window.App = {
 
     var treeView = new App.Views.TreeView({ collection: App.wishes });
     $('#main').append(treeView.render().$el);
-  }
+  },
+  initializeMap: function () {
+    var mapView = new App.Views.MapView({ el: document.getElementById('map-canvas') });
+  },
 };

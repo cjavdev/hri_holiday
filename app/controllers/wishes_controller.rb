@@ -13,10 +13,9 @@ class WishesController < ApplicationController
     @cheer = Cheer.new(wish_params)
 
     if @cheer.save
-      @cheer.sent!
       render json: @cheer
     else
-      render json: @cheer.errors.full_messages, status: :unprocessable_entity
+      render json: @cheer.errors, status: :unprocessable_entity
     end
   end
 
@@ -43,6 +42,17 @@ class WishesController < ApplicationController
   private
 
   def wish_params
-    params.require(:wish).permit(:from_email, :to_email, :note)
+    params.permit(
+      :from_email,
+      :to_email,
+      :note,
+      :accuracy,
+      :altitude,
+      :altitudeAccuracy,
+      :heading,
+      :latitude,
+      :longitude,
+      :speed
+    )
   end
 end

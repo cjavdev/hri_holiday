@@ -25,3 +25,7 @@
 //= require_tree ./views
 //= require_tree ./routers
 //= require_tree .
+
+function randomInt(min, max) {
+  return Math.floor(Math.random() * (max - min)) + min;
+}

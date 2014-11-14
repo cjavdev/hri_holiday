@@ -87,6 +87,7 @@ App.Views.MapView = Backbone.View.extend({
       var marker = new google.maps.Marker({
         position: cheerLatLng,
         map: this.map,
+        icon: STAR_IMG,
         title: 'Happy Holidays'
       });
     }.bind(this));

@@ -16,6 +16,7 @@ gem 'newrelic_rpm'
 gem 'pusher'
 gem 'figaro'
 gem 'animate-rails'
+#gem 'geocoder'
 
 group :development do
   gem 'letter_opener'

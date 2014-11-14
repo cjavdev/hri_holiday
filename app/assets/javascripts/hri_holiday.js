@@ -1,15 +1,27 @@
-/*globals window, App, $ */
+/*globals window, App, $, navigator */
 window.App = {
   Models: {},
   Collections: {},
   Views: {},
   Routers: {},
   initialize: function() {
-    $('button').on('click', function (event) {
-      event.preventDefault();
-      var wish = new App.Models.Wish();
-      App.wishes.add(wish);
+
+    navigator.geolocation.getCurrentPosition(function () {
+      console.log(arguments);
+    }, function () {
+      console.log(arguments);
+    }, {
+      enableHighAccuracy: true,
+			timeout: 10000000,
+			maxaAge: 0
     });
+
+
+    // $('button').on('click', function (event) {
+    //   event.preventDefault();
+    //   var wish = new App.Models.Wish();
+    //   App.wishes.add(wish);
+    // });
 
     var sendWish = new App.Views.SendWish();
     $('#new-wish').append(sendWish.render().$el);

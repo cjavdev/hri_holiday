@@ -27,6 +27,10 @@ window.App = {
     $('#main').append(treeView.render().$el);
   },
   initializeMap: function () {
-    var mapView = new App.Views.MapView({ el: document.getElementById('map-canvas') });
+    App.wishes.fetch();
+    var mapView = new App.Views.MapView({
+      collection: App.wishes,
+      el: document.getElementById('map-canvas')
+    });
   },
 };

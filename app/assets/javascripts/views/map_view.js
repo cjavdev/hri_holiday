@@ -3,6 +3,7 @@ App.Views.MapView = Backbone.View.extend({
   initialize: function () {
     window.map = this.map = new google.maps.Map(this.el, this.mapOptions());
     this.setMapStyle();
+    this.listenTo(this.collection, 'all', this.dropPins);
   },
 
   setMapStyle: function () {},
@@ -79,6 +80,17 @@ App.Views.MapView = Backbone.View.extend({
   },
 
   template: JST['map_view'],
+
+  dropPins: function () {
+    this.collection.each(function (wish) {
+      var cheerLatLng = new google.maps.LatLng(wish.get('latitude'), wish.get('longitude'));
+      var marker = new google.maps.Marker({
+        position: cheerLatLng,
+        map: this.map,
+        title: 'Happy Holidays'
+      });
+    }.bind(this));
+  },
 
   render: function () {
     return this;

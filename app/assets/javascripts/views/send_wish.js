@@ -24,11 +24,8 @@ App.Views.SendWish = Backbone.View.extend({
 
   sendWish: function (event) {
     event.preventDefault();
-
     var content = this.$el.serializeJSON();
-    var wish = new App.Models.Wish(content);
-
-    wish.save().then(function () {
+    this.model.save(content).then(function () {
       console.log("success");
     }, function () {
       console.log("error");

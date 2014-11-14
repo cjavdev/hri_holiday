@@ -5,8 +5,10 @@ window.App = {
   Views: {},
   Routers: {},
   initialize: function() {
+    var newWish = new App.Models.Wish();
 
-    navigator.geolocation.getCurrentPosition(function () {
+    navigator.geolocation.getCurrentPosition(function (pos) {
+      newWish.set({ coords: pos.coords });
       console.log(arguments);
     }, function () {
       console.log(arguments);
@@ -16,14 +18,7 @@ window.App = {
 			maxaAge: 0
     });
 
-
-    // $('button').on('click', function (event) {
-    //   event.preventDefault();
-    //   var wish = new App.Models.Wish();
-    //   App.wishes.add(wish);
-    // });
-
-    var sendWish = new App.Views.SendWish();
+    var sendWish = new App.Views.SendWish({ model: newWish });
     $('#new-wish').append(sendWish.render().$el);
 
     App.wishes.fetch();

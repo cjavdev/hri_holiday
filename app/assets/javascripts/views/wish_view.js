@@ -1,6 +1,6 @@
 /*global JST, App, Backbone */
 App.Views.WishView = Backbone.View.extend({
-  className: 'animated bounceInDown fa fa-star wish',
+  className: 'animated bounceInUp fa fa-star wish',
 
   attributes: function () {
     return {

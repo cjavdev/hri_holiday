@@ -1,6 +1,6 @@
 /*global JST, App, Backbone */
 App.Views.WishView = Backbone.View.extend({
-  className: 'animated bounceInUp fa fa-star wish',
+  className: 'animated bounceInUp wish',
 
   attributes: function () {
     return {
@@ -9,8 +9,8 @@ App.Views.WishView = Backbone.View.extend({
   },
 
   events: {
-    'mouseenter': 'showCard',
-    'mouseleave': 'hideCard',
+    'mouseenter i': 'showCard',
+    'mouseleave i': 'hideCard',
   },
 
   styleAttrs: function () {

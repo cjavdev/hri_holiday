@@ -8,11 +8,14 @@ App.Views.MapView = Backbone.View.extend({
   setMapStyle: function () {},
 
   mapOptions: function () {
+    var darkBlue = "#273F5A"
     var styles = [{
       stylers: [{
-
+        hue: darkBlue
       }, {
-        lightness: -50
+        lightness: -70
+      }, {
+        saturation: 20
       }]
     }, {
       featureType: "all",
@@ -20,10 +23,55 @@ App.Views.MapView = Backbone.View.extend({
       stylers: [{
         visibility: "off"
       }]
+    }, {
+      featureType: "water",
+      stylers: [{
+        hue: darkBlue
+      }, {
+        lightness: -80
+      }, {
+        saturation: 20
+      }]
+    }, {
+      featureType: "landscape",
+      stylers: [{
+        hue: darkBlue
+      }, {
+        lightness: -40
+      }, {
+        saturation: 20
+      }]
+    }, {
+      featureType: "poi",
+      stylers: [{
+        hue: darkBlue
+      }, {
+        lightness: -70
+      }, {
+        saturation: 20
+      }]
+    }, {
+      featureType: "administrative",
+      stylers: [{
+        hue: darkBlue
+      }, {
+        lightness: -40
+      }, {
+        saturation: 20
+      }]
+    }, {
+      featureType: "transit",
+      stylers: [{
+        hue: darkBlue
+      }, {
+        lightness: -40
+      }, {
+        saturation: 20
+      }]
     }];
 
     return {
-      center: new google.maps.LatLng(-34.397, 150.644),
+      center: new google.maps.LatLng(46.119651304573964, -93.076703125),
       zoom: 4,
       backgroundColor: 'black',
       styles: styles

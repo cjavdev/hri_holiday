@@ -6,6 +6,13 @@ class Cheer
     WishMailer.holiday_cheer(@wish).deliver
   end
 
+  def sent!
+    Pusher['cheer_channel'].trigger('wish_sent', {
+      message: 'cheer sent!',
+      wish: @wish.to_json
+    })
+  end
+
   def save
     @wish.save
   end

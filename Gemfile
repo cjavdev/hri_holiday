@@ -10,10 +10,15 @@ gem 'jbuilder', '~> 2.0'
 gem 'spring',        group: :development
 
 gem 'bootstrap-sass'
+gem 'font-awesome-sass', '~> 4.2.0'
 gem 'backbone-on-rails'
 gem 'newrelic_rpm'
+gem 'pusher'
+gem 'figaro'
+gem 'animate-rails'
 
 group :development do
   gem 'letter_opener'
   gem 'launchy'
 end
+

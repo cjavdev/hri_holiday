@@ -11,11 +11,15 @@
  * file per style scope.
  *
  *= require_tree .
+ *= require animate
  *= require_self
  */
 
-@import "bootstrap";
 @import "bootstrap-sprockets";
+@import "bootstrap";
+
+@import "font-awesome-sprockets";
+@import "font-awesome";
 
 .tree {
   width: 100%;
@@ -26,4 +30,17 @@
   left: 0;
   right: 0;
   bottom: 0;
+}
+
+.wishes {
+  position: absolute;
+  top: 50;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 100;
+}
+
+.wish > i {
+  color: white;
 }

@@ -1,3 +1,4 @@
+<div id="main"></div>
 <div class="container-fluid tree">
   <div class="row">
     <div class="col-md-2 col-sm-4 col-lg-2">
@@ -24,34 +25,10 @@
       </form>
     </div>
   </div>
-  <div class="row">
-    <ul id="wishes">
-    </ul>
-  </div>
 </div>
 
 <script>
   $(function () {
-    $('form').on('submit', function (event) {
-      event.preventDefault();
-
-      var $form = $(event.currentTarget);
-      var content = $form.serializeJSON();
-      var wish = new App.Models.Wish(content);
-
-      wish.save().then(function () {
-        console.log("success");
-      }, function () {
-        console.log("error");
-      });
-    });
-
-    var wishes = new App.Collections.Wishes();
-
-    wishes.fetch().then(function () {
-      wishes.each(function (wish) {
-        $('#wishes').append($('<div>').text(wish.id));
-      });
-    });
+    App.initialize();
   });
 </script>

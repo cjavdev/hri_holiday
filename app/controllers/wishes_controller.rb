@@ -13,6 +13,7 @@ class WishesController < ApplicationController
     @cheer = Cheer.new(wish_params)
 
     if @cheer.save
+      @cheer.sent!
       render json: @cheer
     else
       render json: @cheer.errors.full_messages, status: :unprocessable_entity

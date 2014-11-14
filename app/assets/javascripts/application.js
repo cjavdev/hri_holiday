@@ -14,9 +14,11 @@
 //= require jquery_ujs
 //= require bootstrap
 //= require jquery.serializejson.min
+//= require pusher.min
 //= require underscore
 //= require backbone
 //= require hri_holiday
+//= require pusher
 //= require_tree ../templates
 //= require_tree ./models
 //= require_tree ./collections

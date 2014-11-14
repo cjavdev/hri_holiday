@@ -14,4 +14,7 @@
 class Wish < ActiveRecord::Base
   belongs_to :wisher, class_name: 'User'
   belongs_to :wishee, class_name: 'User'
+
+  reverse_geocoded_by :latitude, :longitude, address: :address
+  after_validation :reverse_geocode
 end

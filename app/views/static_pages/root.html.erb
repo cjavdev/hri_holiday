@@ -1,34 +1,11 @@
 <div id="main"></div>
 <div class="container-fluid tree">
   <div class="row">
-    <div class="col-md-2 col-sm-4 col-lg-2">
-      <form>
-        <div class="form-group">
-          <input
-            class="form-control"
-            name="wish[from_email]"
-            type="email"
-            placeholder="From:"
-            value="<%= @current_email %>"></input>
-        </div>
-        <div class="form-group">
-          <input
-            class="form-control"
-            name="wish[to_email]"
-            placeholder="To:"
-            type="email"></input>
-        </div>
-        <div class="form-group">
-          <textarea class="form-control" name="wish[note]">Happy Holidays!</textarea>
-        </div>
-        <input class="btn btn-primary" type="submit" value="Send Cheer!">
-      </form>
+    <div class="col-lg-offset-9 col-sm-offset-9 col-md-offset-9 col-md-3 col-sm-3 col-lg-3">
+      <div id="new-wish"></div>
+      <button class="btn btn-danger">Cheer!</button>
     </div>
   </div>
 </div>
 
-<script>
-  $(function () {
-    App.initialize();
-  });
-</script>
+<script>$(App.initialize);</script>

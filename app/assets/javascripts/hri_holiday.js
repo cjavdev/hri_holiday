@@ -1,24 +1,21 @@
+/*globals window, App, $ */
 window.App = {
   Models: {},
   Collections: {},
   Views: {},
   Routers: {},
   initialize: function() {
-    $('form').on('submit', function (event) {
+    $('button').on('click', function (event) {
       event.preventDefault();
-
-      var $form = $(event.currentTarget);
-      var content = $form.serializeJSON();
-      var wish = new App.Models.Wish(content);
-
-      wish.save().then(function () {
-        console.log("success");
-      }, function () {
-        console.log("error");
-      });
+      var wish = new App.Models.Wish();
+      App.wishes.add(wish);
     });
 
+    var sendWish = new App.Views.SendWish();
+    $('#new-wish').append(sendWish.render().$el);
+
     App.wishes.fetch();
+
     var treeView = new App.Views.TreeView({ collection: App.wishes });
     $('#main').append(treeView.render().$el);
   }

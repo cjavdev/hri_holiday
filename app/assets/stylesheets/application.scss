@@ -53,6 +53,12 @@
 .wish {
   position: absolute;
   color: white;
+  .note {
+    display: none;
+    .show {
+      display: block;
+    }
+  }
 }
 
 .send-wish-form {

@@ -24,4 +24,12 @@ class Wish < ActiveRecord::Base
 
   reverse_geocoded_by :latitude, :longitude, address: :address
   after_validation :reverse_geocode
+
+  def from_email
+    wisher.email
+  end
+
+  def to_email
+    wishee.email
+  end
 end

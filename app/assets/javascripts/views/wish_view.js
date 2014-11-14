@@ -8,6 +8,11 @@ App.Views.WishView = Backbone.View.extend({
     };
   },
 
+  events: {
+    'mouseenter': 'showCard',
+    'mouseleave': 'hideCard',
+  },
+
   styleAttrs: function () {
     return [
       'top:' + randomInt(100, 500) + 'px',
@@ -26,8 +31,17 @@ App.Views.WishView = Backbone.View.extend({
   template: JST['wish_view'],
 
   render: function () {
+    var content = this.template({ wish: this.model });
+    this.$el.html(content);
+
     return this;
+  },
+
+  showCard: function () {
+    this.$('.note').addClass('show');
+  },
+
+  hideCard: function () {
+    this.$('.note').removeClass('show');
   }
 });
-
-

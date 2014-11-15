@@ -75,7 +75,7 @@ App.Views.MapView = Backbone.View.extend({
       center: new google.maps.LatLng(46.119651304573964, -93.076703125),
       zoom: 4,
       backgroundColor: 'black',
-      styles: styles
+      styles: styles,
     };
   },
 

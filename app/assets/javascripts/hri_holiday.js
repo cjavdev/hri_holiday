@@ -34,3 +34,7 @@ window.App = {
     });
   },
 };
+
+function noImage(img) {
+  img.src = STAR_IMG;
+}

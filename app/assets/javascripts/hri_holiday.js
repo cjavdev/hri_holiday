@@ -26,11 +26,21 @@ window.App = {
     var treeView = new App.Views.TreeView({ collection: App.wishes });
     $('#main').append(treeView.render().$el);
   },
+
   initializeMap: function () {
     App.wishes.fetch();
     var mapView = new App.Views.MapView({
       collection: App.wishes,
       el: document.getElementById('map-canvas')
+    });
+  },
+
+  initializeCanvas: function () {
+    App.wishes.fetch();
+
+    var canvasView = new App.Views.CanvasView({
+      collection: App.wishes,
+      el: document.getElementById('canvas')
     });
   },
 };

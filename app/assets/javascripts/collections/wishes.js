@@ -4,7 +4,7 @@ App.Collections.Wishes = Backbone.Collection.extend({
 
   withMagnitude: function () {
     return _(this.map(function (wish) {
-      return [wish.get('latitude'), wish.get('longitude'), 0.10];
+      return [wish.get('latitude'), wish.get('longitude'), 0.10, 1];
     })).flatten();
   }
 });

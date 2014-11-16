@@ -16,11 +16,15 @@ var DAT = DAT || {};
 DAT.Globe = function(container, opts) {
   opts = opts || {};
 
+  var colorCounter = 0;
   var colorFn = opts.colorFn || function(x) {
-    var c = new THREE.Color();
-    c.setHSL( ( 0.6 - ( x * 0.5 ) ), 1.0, 0.5 );
-    return c;
+    var colors = ["#273F5A", "#C6DBF3", "#4B81A5", "#74A0BF", "#98C4DA"];
+    return (function () {
+      colorCounter++;
+      return new THREE.Color(colors[colorCounter % colors.length]);
+    }());
   };
+
   var imgDir = opts.imgDir || '/assets/';
 
   var Shaders = {
@@ -86,7 +90,6 @@ DAT.Globe = function(container, opts) {
   var PI_HALF = Math.PI / 2;
 
   function init() {
-
     container.style.color = '#fff';
     container.style.font = '13px/20px Arial, sans-serif';
 
@@ -188,7 +191,6 @@ DAT.Globe = function(container, opts) {
         for (i = 0; i < data.length; i += step) {
           lat = data[i];
           lng = data[i + 1];
-//        size = data[i + 2];
           color = colorFnWrapper(data,i);
           size = 0;
           addPoint(lat, lng, size, color, this._baseGeometry);
@@ -207,7 +209,7 @@ DAT.Globe = function(container, opts) {
       lng = data[i + 1];
       color = colorFnWrapper(data,i);
       size = data[i + 2];
-      size = size*200;
+      size = size * 200;
       addPoint(lat, lng, size, color, subgeo);
     }
     if (opts.animated) {
@@ -261,9 +263,7 @@ DAT.Globe = function(container, opts) {
     point.updateMatrix();
 
     for (var i = 0; i < point.geometry.faces.length; i++) {
-
       point.geometry.faces[i].color = color;
-
     }
 
     THREE.GeometryUtils.merge(subgeo, point);

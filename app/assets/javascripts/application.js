@@ -13,6 +13,10 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap
+//= require Detector
+//= require three.min
+//= require Tween
+//= require globe
 //= require jquery.serializejson.min
 //= require pusher.min
 //= require underscore

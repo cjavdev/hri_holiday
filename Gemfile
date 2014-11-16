@@ -17,6 +17,7 @@ gem 'pusher'
 gem 'figaro'
 gem 'animate-rails'
 gem 'geocoder'
+gem 'faker'
 
 group :development do
   gem 'letter_opener'

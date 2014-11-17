@@ -5,7 +5,7 @@ class StaticPagesController < ApplicationController
     elsif params[:email]
       @current_email = params[:email]
     else
-      @current_email = "northpole@happyholida.ys"
+      @current_email = "Merry@HyperRelevance.com"
     end
   end
 

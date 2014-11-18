@@ -24,7 +24,6 @@ window.App = {
     $('#new-wish').append(sendWish.render().$el);
 
     App.wishes.fetch();
-
     var treeView = new App.Views.TreeView({
       collection: App.wishes
     });

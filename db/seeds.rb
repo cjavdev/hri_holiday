@@ -1,5 +1,5 @@
 
-1000.times do
+100.times do
   from = User.create(email: Faker::Internet.email)
   to = User.create(email: Faker::Internet.email)
 

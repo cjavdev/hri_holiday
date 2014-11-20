@@ -7,21 +7,31 @@ App.Views.WishView = Backbone.View.extend({
     'mouseleave i': 'hideCard',
   },
 
-  initialize: function () {
+  initialize: function (options) {
     this.listenTo(this.model, 'sync', this.render);
-    setTimeout(function() {
-      this.shootStar();
-    }.bind(this), randomInt(500, 3000));
+
+    if(this.model.id % 9 == 0) {
+      setTimeout(function () {
+        this.shootStar(15);
+      }.bind(this), randomInt(300, 3000));
+    } else {
+      this.shootStar((this.model.id % 8) + 3);
+    }
   },
 
   template: JST['wish_view'],
 
-  shootStar: function () {
+  shootStar: function (size) {
     var tenPerH = parseInt(window.innerHeight / 10, 10);
-    if(this.$el.css('bottom') === 'auto' || this.$el.css('bottom') == '0px') {
-      this.$el.css('bottom', randomInt(130 + tenPerH, window.innerHeight - tenPerH));
-      this.$el.css('left', randomInt(10, window.innerWidth - 100));
+    var bottom = this.$el.css('bottom');
+    if(bottom === 'auto' || bottom == '0px' || bottom === '') {
+      this.$el.css('transform','translate(' + randomInt(20, window.innerWidth + 80)+ 'px, -' + randomInt(130 + tenPerH, window.innerHeight)+ 'px)');
+      this.$el.css('font-size', (size * 1.5) + 'px');
     }
+
+    setTimeout(function () {
+      this.$('i').css('transform', 'scale(0.75)');
+    }.bind(this), 1000);
   },
 
   render: function () {
@@ -34,6 +44,10 @@ App.Views.WishView = Backbone.View.extend({
     var $div = $('<div class="note">');
     $div.css('background-color', randomColor());
     $div.text(this.model.escape('note'));
+    var diff = window.innerWidth - this.$el.offset().left;
+    if(diff < 200) {
+      $div.css('margin-left','-200px');
+    }
     this.$el.addClass('tippy');
     this.$el.append($div);
   },

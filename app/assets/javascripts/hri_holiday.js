@@ -9,9 +9,8 @@ window.App = {
 
     navigator.geolocation.getCurrentPosition(function (pos) {
       newWish.set(pos.coords);
-      console.log(arguments);
     }, function () {
-      console.log(arguments);
+      console.log('geolocation error');
     }, {
       enableHighAccuracy: true,
       timeout: 10000000,

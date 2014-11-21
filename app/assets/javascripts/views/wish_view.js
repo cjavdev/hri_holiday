@@ -10,12 +10,12 @@ App.Views.WishView = Backbone.View.extend({
   initialize: function (options) {
     this.listenTo(this.model, 'sync', this.render);
 
-    if(this.model.id % 9 == 0) {
+    if(this.model.id % 10 == 0) {
       setTimeout(function () {
         this.shootStar(15);
       }.bind(this), randomInt(300, 3000));
     } else {
-      this.shootStar((this.model.id % 8) + 3);
+      this.shootStar((this.model.id % 10) + 5);
     }
   },
 
@@ -26,11 +26,11 @@ App.Views.WishView = Backbone.View.extend({
     var bottom = this.$el.css('bottom');
     if(bottom === 'auto' || bottom == '0px' || bottom === '') {
       this.$el.css('transform','translate(' + randomInt(20, window.innerWidth + 80)+ 'px, -' + randomInt(130 + tenPerH, window.innerHeight)+ 'px)');
-      this.$el.css('font-size', (size * 1.5) + 'px');
+      this.$el.css('font-size', size + 'px');
     }
 
     setTimeout(function () {
-      this.$('i').css('transform', 'scale(0.75)');
+      this.$('i').css('transform', 'scale(0.8)');
     }.bind(this), 1000);
   },
 

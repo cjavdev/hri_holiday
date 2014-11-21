@@ -2,17 +2,7 @@
 App.Views.TreeView = Backbone.View.extend({
   className: 'wishes',
 
-  events: {
-    'mousemove': 'handleMouse'
-  },
-
-  handleMouse: function (e) {
-    this.i++;
-
-  },
-
   initialize: function () {
-    this.i = 0;
     this.subViews = {};
     this.listenTo(this.collection, 'sync', this.render);
     this.listenTo(this.collection, 'add', this.addWish);

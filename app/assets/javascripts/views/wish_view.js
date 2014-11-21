@@ -10,7 +10,7 @@ App.Views.WishView = Backbone.View.extend({
   initialize: function (options) {
     this.listenTo(this.model, 'sync', this.render);
 
-    if(this.model.id % 10 == 0) {
+    if(this.model.id % 5 == 0) {
       setTimeout(function () {
         this.shootStar(15);
       }.bind(this), randomInt(300, 3000));

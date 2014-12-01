@@ -83,8 +83,12 @@
   }
 
   i {
+    height: 20px;
+    width: 20px;
+    display: block;
     z-index: 1;
-    color: white;
+    background-image: image-url('star.gif');
+    background-size: cover;
 
     -webkit-transition: all 1.3s linear;
     -moz-transition: all 1.3s linear;

@@ -24,8 +24,7 @@ App.Views.TreeView = Backbone.View.extend({
     var view = this;
     this.collection.each(view.addWish.bind(this));
 
-    if(this.collection.length > 0 && this.listening === false) {
-      this.listening = true;
+    if(this.collection.length > 0) {
       this.listenTo(this.collection, 'add', function (wish) {
         console.log('from add');
         this.addWish(wish, this.collection.length);

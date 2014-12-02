@@ -38,9 +38,12 @@ window.App = {
   },
 
   installWishForm: function () {
-    var newWish = new App.Models.Wish();
+    var newWish = new App.Models.Wish({
+      note: 'Wishing you a holiday season filled with peace, joy and happiness. Share the spirit and add your cheer to the season!'
+    });
     var sendWish = new App.Views.SendWish({
-      model: newWish
+      model: newWish,
+      collection: App.wishes
     });
     $('#new-wish').append(sendWish.render().$el);
   },

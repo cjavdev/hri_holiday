@@ -14,7 +14,8 @@ App.Views.SendWish = Backbone.View.extend({
   render: function () {
     if(!this.sent) {
       var content = this.formTemplate({
-        current_email: 'happy@holidays.com'
+        wish: this.model,
+        current_email: 'Merry@HyperRelevance.com'
       });
     } else {
       var content = this.sentTemplate();
@@ -32,7 +33,9 @@ App.Views.SendWish = Backbone.View.extend({
 
   restart: function () {
     this.sent = false;
-    this.model = new App.Models.Wish();
+    this.model = new App.Models.Wish({
+      note: this.model.get('note')
+    });
     this.render();
   },
 

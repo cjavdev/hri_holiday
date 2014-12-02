@@ -13,6 +13,9 @@
 </head>
 <body>
 <div id="fb-root"></div>
+
+<%= yield %>
+
 <script>(function(d, s, id) {
 var js, fjs = d.getElementsByTagName(s)[0];
 if (d.getElementById(id)) return;
@@ -20,8 +23,6 @@ js = d.createElement(s); js.id = id;
 js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&appId=400132176808183&version=v2.0";
 fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script>
-
-<%= yield %>
 <link href="//fonts.googleapis.com/css?family=Oxygen:400italic,400,700italic,700" rel="stylesheet" type="text/css">
 </body>
 </html>

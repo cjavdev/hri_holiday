@@ -1,14 +1,25 @@
-/*globals Detector, window, document, App, $, navigator */
+/*globals Detector, window, document, App, $, navigator, TWEEN, DAT */
 window.App = {
   Models: {},
   Collections: {},
   Views: {},
   Routers: {},
+  coords: {},
   initialize: function () {
-    var newWish = new App.Models.Wish();
+    App.locateUser();
+    App.installWishForm();
+    App.installTreeView();
+    App.installNav();
+  },
 
+  installNav: function () {
+    var nav = new App.Views.Nav({ collection: App.wishes });
+    $('#nav').html(nav.render().$el);
+  },
+
+  locateUser: function () {
     navigator.geolocation.getCurrentPosition(function (pos) {
-      newWish.set(pos.coords);
+      App.coords = pos.coords;
     }, function () {
       console.log('geolocation error');
     }, {
@@ -16,12 +27,9 @@ window.App = {
       timeout: 10000000,
       maxaAge: 0
     });
+  },
 
-    var sendWish = new App.Views.SendWish({
-      model: newWish
-    });
-    $('#new-wish').append(sendWish.render().$el);
-
+  installTreeView: function () {
     App.wishes.fetch();
     var treeView = new App.Views.TreeView({
       collection: App.wishes
@@ -29,21 +37,12 @@ window.App = {
     $('#main').append(treeView.render().$el);
   },
 
-  initializeMap: function () {
-    App.wishes.fetch();
-    var mapView = new App.Views.MapView({
-      collection: App.wishes,
-      el: document.getElementById('map-canvas')
+  installWishForm: function () {
+    var newWish = new App.Models.Wish();
+    var sendWish = new App.Views.SendWish({
+      model: newWish
     });
-  },
-
-  initializeCanvas: function () {
-    App.wishes.fetch();
-
-    var canvasView = new App.Views.CanvasView({
-      collection: App.wishes,
-      el: document.getElementById('canvas')
-    });
+    $('#new-wish').append(sendWish.render().$el);
   },
 
   initializeGlobe: function () {
@@ -53,7 +52,6 @@ window.App = {
       var container = document.getElementById('container');
       var globe = new DAT.Globe(container);
 
-      var i, tweens = [];
       var settime = function (globe, t) {
         return function () {
           new TWEEN.Tween(globe).to({

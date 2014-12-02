@@ -1,7 +1,6 @@
 /*global JST, App, Backbone */
 App.Views.TreeView = Backbone.View.extend({
   className: 'wishes',
-  listening: false,
 
   initialize: function () {
     this.subViews = {};

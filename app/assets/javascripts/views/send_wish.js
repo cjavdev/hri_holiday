@@ -1,17 +1,25 @@
 /*globals App, Backbone, JST */
 App.Views.SendWish = Backbone.View.extend({
-  template: JST['send_wish'],
+  formTemplate: JST['send_wish'],
+  sentTemplate: JST['sent_wish'],
+
   className: 'send-wish-form hide',
   tagName: 'form',
 
   events: {
-    'submit': 'sendWish'
+    'submit': 'sendWish',
+    'click button.restart': 'restart'
   },
 
   render: function () {
-    var content = this.template({
-      current_email: 'happy@holidays.com'
-    });
+    if(!this.sent) {
+      var content = this.formTemplate({
+        current_email: 'happy@holidays.com'
+      });
+    } else {
+      var content = this.sentTemplate();
+    }
+
     this.$el.html(content);
 
     setTimeout(function () {
@@ -22,12 +30,21 @@ App.Views.SendWish = Backbone.View.extend({
     return this;
   },
 
+  restart: function () {
+    this.sent = false;
+    this.model = new App.Models.Wish();
+    this.render();
+  },
+
   sendWish: function (event) {
     event.preventDefault();
     var content = this.$el.serializeJSON();
+    this.model.set(App.coords);
     this.model.save(content).then(function () {
+      this.sent = true;
+      this.render();
       console.log("success");
-    }, function () {
+    }.bind(this), function () {
       console.log("error");
     });
   },

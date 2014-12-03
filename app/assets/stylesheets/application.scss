@@ -25,15 +25,13 @@
   font-family: "Oxygen";
 }
 
-.tree {
-  width: 100%;
-  background-image: asset-url("Snowytown1.jpg");
+html {
+  min-height: 100%;
+}
+
+body {
+  background: asset-url("Snowytown1.jpg") no-repeat center bottom;
   background-size: cover;
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
 }
 
 .full-screen {
